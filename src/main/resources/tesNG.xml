@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Test ">
+    <test name="Trailers-Now" time-out="3600000">
+        <classes>
+            <class name="com.test.mobile.BasicTests.SmokeTest1"/>
+        </classes>
+    </test>
+</suite>
