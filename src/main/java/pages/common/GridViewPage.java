@@ -6,13 +6,14 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
+import pages.HomePage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static common.AppiumManager.mobileDriver;
 
-public class GridViewPage extends Page {
+public class GridViewPage extends HomePage {
     public GridViewPage() {
         PageFactory.initElements(new AppiumFieldDecorator(mobileDriver), this);
     }
@@ -40,7 +41,7 @@ public class GridViewPage extends Page {
 
 
     public void clickOnLikeButton() {
-        boolean success = clickBy(likeButton);
+        boolean success = clickBy(likeButton,"likeButton");
         if (success) {
             ExtentReporting.logInfo("Clicked on Like Button");
         } else {
@@ -73,7 +74,7 @@ public class GridViewPage extends Page {
             return false;
         }
         MobileElement element = elements.get(index);
-        clickBy(element);
+        clickBy(element,"gridViewItems");
         return true;
 
     }
@@ -131,7 +132,7 @@ public class GridViewPage extends Page {
 
 
     public void clickOnWikiButton() {
-        boolean success = clickBy(wikiButton);
+        boolean success = clickBy(wikiButton,"wikiButton");
         if (success) {
             ExtentReporting.logInfo("Clicked on Wiki Button");
         } else {

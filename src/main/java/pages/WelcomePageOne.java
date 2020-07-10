@@ -28,7 +28,7 @@ public class WelcomePageOne extends Page {
 
     public void clickOnNext() {
 
-        boolean success = clickBy(nextButton);
+        boolean success = clickBy(nextButton,"nextButton");
         if (success) {
             ExtentReporting.logInfo("Clicked on Next Button");
         } else {

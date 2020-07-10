@@ -1,18 +1,16 @@
 package pages;
 
 import common.reporting.ExtentReporting;
-import common.utilityfunctions.Page;
 import enums.NavigateInsideMovieTrailer;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import static common.AppiumManager.mobileDriver;
 
 
-public class HomePage extends Page {
+public class HomePage extends LoggedInPage {
 
     @AndroidFindBy(id = "com.andyapps.thetrailersnow:id/ic_menu")
     MobileElement hamburgerMenu;
@@ -47,7 +45,7 @@ public class HomePage extends Page {
     @AndroidFindBy(xpath = "//*[@resource-id='com.andyapps.thetrailersnow:id/material_drawer_name' and @text='Hindi']")
     MobileElement hindiTrailers;
 
-    @AndroidFindBy(xpath = "//*[contains(@text,'Kannada') and @resource-id='com.andyapps.thetrailersnow:id/material_drawer_name']")
+    @AndroidFindBy(xpath = "//*[@text='Kannada' and @resource-id='com.andyapps.thetrailersnow:id/material_drawer_name']")
     MobileElement kannadaTrailer;
 
     @AndroidFindBy(xpath = "//*[@class='@resource-id='com.andyapps.thetrailersnow:id/material_drawer_name' and @text='Tamil']")
@@ -60,7 +58,7 @@ public class HomePage extends Page {
     private MobileElement navigateToTop;
 
     @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and @text='Movie Trailers']")
-    private MobileElement movieTrailers;
+    MobileElement movieTrailers;
 
     @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and @text='Video Songs']")
     private MobileElement videoSongs;
@@ -98,123 +96,58 @@ public class HomePage extends Page {
 
     public void clickMovieTrailers() {
         clickHambugerMenu();
-        boolean success = clickBy(movieTrailers);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Movie Trailers");
-        } else {
-            ExtentReporting.logInfo("Could Not Click on Movie Trailers");
-        }
+       clickBy(movieTrailers,"movieTrailers");
     }
 
     public void clickVideoSongs() {
         clickHambugerMenu();
-        boolean success = clickBy(videoSongs);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on videoSongs");
-        } else {
-            ExtentReporting.logInfo("Could Not Click on videoSongs");
-        }
+       clickBy(videoSongs,"videoSongs");
     }
 
     public void clickTvShows() {
         clickHambugerMenu();
-        boolean success = clickBy(tvShows);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on TV Shows");
-        } else {
-            ExtentReporting.logInfo("Could Not Click on TV Shows");
-        }
+        clickBy(tvShows,"tvShows");
     }
 
     public void clickFavourites() {
         clickHambugerMenu();
-        boolean success = clickBy(favouriteTrailers);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Favourite Trailers");
-        } else {
-            ExtentReporting.logInfo("Could Not Click Favourite Trailers");
-        }
+        clickBy(favouriteTrailers,"favouriteTrailers");
     }
 
     public void clickJustBollywood() {
         clickHambugerMenu();
-        boolean success = clickBy(justHollywood);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Just Hollywood");
-        } else {
-            ExtentReporting.logInfo("Could Not Click Just Hollywood");
-        }
+        clickBy(justHollywood,"Just HollyWood");
     }
 
     public void clickShareApp() {
         clickHambugerMenu();
-        boolean success = clickBy(shareApp);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Share App");
-        } else {
-            ExtentReporting.logInfo("Could Not Click Share App");
-        }
+         clickBy(shareApp,"Share App Button");
     }
 
     public void clickPrivacyPolicy() {
-        clickHambugerMenu();
-        boolean success = clickBy(privacyPolicy);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Privacy Policy");
-        } else {
-            ExtentReporting.logInfo("Could Not Click Privacy Policy");
-        }
+         clickHambugerMenu();
+         clickBy(privacyPolicy,"Privacy Button");
     }
 
     public void clickSendFeedBack() {
         clickHambugerMenu();
-        boolean success = clickBy(sendFeedback);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Send Feedback");
-        } else {
-            ExtentReporting.logInfo("Could Not Click Send Feedback");
-        }
-    }
-
-    public void click(WebElement element) {
-        clickHambugerMenu();
-        boolean success = clickBy(element);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on " + element.getText());
-        } else {
-            ExtentReporting.logInfo("Could Not Click" + element.getText());
-        }
+        clickBy(sendFeedback,"Send Feed Back Button");
     }
 
     public void clickRateApp() {
         clickHambugerMenu();
-        boolean success = clickBy(rateApp);
-        if (success) {
-            ExtentReporting.logInfo("Clicked on Rate App");
-        } else {
-            ExtentReporting.logInfo("Could Not Click Rate App");
-        }
+       clickBy(rateApp,"Rate App Button");
     }
 
     public void clickHambugerMenu() {
         if (hamburgerMenu.isDisplayed()) {
             ExtentReporting.logInfo("Clicking on Hamburger Menu");
-            clickBy(hamburgerMenu);
-            ExtentReporting.logInfo("Clicked on Hamburger Menu");
-        } else {
-            ExtentReporting.logInfo("Could not Click on Hamburger Menu");
+            clickBy(hamburgerMenu,"Hamburger Menu");
         }
     }
 
     public void navigateToTop() {
-        boolean success = clickBy(navigateToTop);
-        {
-            if (success) {
-                ExtentReporting.logInfo("Clicked on Navigate To Top");
-            } else {
-                ExtentReporting.logInfo("Could Not Navigate To Top");
-            }
-        }
+       clickBy(navigateToTop,"navigateToTop");
     }
 
     public void navigateToMovieTrailer(NavigateInsideMovieTrailer navigateInsideMovieTrailer) {
@@ -226,7 +159,7 @@ public class HomePage extends Page {
                 clickMovieLanguageTrailers(hindiTrailers);
                 break;
             case KANNADA:
-                clickMovieLanguageTrailers(this.kannadaTrailer);
+                clickMovieLanguageTrailers(kannadaTrailer);
                 break;
             case MALAYALAM:
                 clickMovieLanguageTrailers(malyalamTrailers);
@@ -251,12 +184,17 @@ public class HomePage extends Page {
 
     private void clickMovieLanguageTrailers(MobileElement languageTrailer) {
         clickMovieTrailers();
-        clickBy(languageTrailer);
+        clickBy(languageTrailer,"Clicked on Language Trailer");
     }
 
     public void closeExpandedMovieTrailer() {
         if (kannadaTrailer.isDisplayed())
             clickMovieTrailers();
+    }
+
+    public void clickKannadaTrailer()
+    {
+       clickBy(kannadaTrailer,"kannadaTrailer");
     }
 }
 
