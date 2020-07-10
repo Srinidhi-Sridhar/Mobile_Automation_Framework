@@ -62,7 +62,7 @@ public class TrailerPage extends Page {
 
     public void watchTrailer()
     {
-        clickBy(watchTrailer);
+        clickBy(watchTrailer,"watchTrailer");
     }
 
     public List<String> getGenres()

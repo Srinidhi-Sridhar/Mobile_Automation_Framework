@@ -26,7 +26,7 @@ public class WelcomePageThree extends Page {
 
 
     public void clickOnNext() {
-        boolean success = clickBy(nextButton);
+        boolean success = clickBy(nextButton,"nextButton");
         if (success) {
             ExtentReporting.logInfo( "Clicked on videoSongs");
         } else {
@@ -36,7 +36,7 @@ public class WelcomePageThree extends Page {
 
     public void switchToHMode() {
         if (!checkIfDisplayed(switchAppOn)) {
-            clickBy(switchAppOn);
+            clickBy(switchAppOn,"switchAppOn");
             ExtentReporting.logInfo( " Clicked on Switched App Button");
 
         } else {

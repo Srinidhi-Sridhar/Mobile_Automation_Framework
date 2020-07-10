@@ -53,32 +53,27 @@ public class WelcomePageTwo extends Page {
     public void selectCheckBoxBy(SelectCheckBox selectCheckBox) {
         switch (selectCheckBox) {
             case SELECT_ALL:
-                clickBy(selectAllButton);
-                ExtentReporting.logInfo( "Clicked on Select All Button");
+                clickBy(selectAllButton,"selectAllButton");
                 break;
             case JUST_HOLLYWOOD:
-                clickBy(justHollywoodCheckBox);
-                ExtentReporting.logInfo( "Clicked on Just Hollywood");
+                clickBy(justHollywoodCheckBox,"justHollywoodCheckBox");
                 break;
             case HINDI:
-                clickBy(hindiCheckBox);
+                clickBy(hindiCheckBox,"hindiCheckBox");
                 ExtentReporting.logInfo( "Clicked on Hindi");
                 break;
             case KANNADA:
-                clickBy(kannadaCheckBox);
+                clickBy(kannadaCheckBox,"kannadaCheckBox");
                 ExtentReporting.logInfo( "Clicked on Kannada");
                 break;
             case MALAYALAM:
-                clickBy(malayalamCheckBox);
-                ExtentReporting.logInfo( "Clicked on Malayalam");
+                clickBy(malayalamCheckBox,"kannadaCheckBox");
                 break;
             case TAMIL:
-                clickBy(tamilCheckBox);
-                ExtentReporting.logInfo( "Clicked on Tamil");
+                clickBy(tamilCheckBox,"kannadaCheckBox");
                 break;
             case TELUGU:
-                clickBy(teluguCheckBox);
-                ExtentReporting.logInfo( "Clicked on Telugu");
+                clickBy(teluguCheckBox,"kannadaCheckBox");
                 break;
             default:
                 ExtentReporting.logFail("Could not click on Any Checkbox",true);
@@ -86,7 +81,7 @@ public class WelcomePageTwo extends Page {
     }
 
     public void clickOnNext() {
-        clickBy(nextButton);
+        clickBy(nextButton,"nextButton");
     }
 
 }

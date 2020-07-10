@@ -1,8 +1,10 @@
 package pages;
 
+import common.utilityfunctions.Page;
 import pages.common.GridViewPage;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
+
 
 import static common.AppiumManager.mobileDriver;
 

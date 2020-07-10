@@ -63,13 +63,13 @@ public class Page {
      * @param locator the locator
      * @return the boolean
      */
-    protected boolean clickBy(WebElement locator) {
+    protected boolean clickBy(WebElement locator,String buttonName) {
         try {
             new WebDriverWait(mobileDriver, AutomationConstants.WAIT_UNTIL_ELEMENT).until(ExpectedConditions.elementToBeClickable((locator))).click();
-            ExtentReporting.logInfo("Clicked on"+locator.getText());
+            ExtentReporting.logInfo("Clicked on "+buttonName);
         } catch (WebDriverException e) {
-            ExtentReporting.logFail("Could not Click" + locator.getText(), true);
-            Log.error("Could not click"+ locator.getText(),e);
+             ExtentReporting.logFail("Could not Click " + locator.getText(), true);
+            Log.error("Could not click"+ buttonName,e);
             return false;
         }
         return true;
@@ -82,13 +82,13 @@ public class Page {
      * @param keysToBeSent the keys to be sent
      * @return the boolean
      */
-    protected boolean sendKeysBy(WebElement locator, String keysToBeSent) {
+    protected boolean sendKeysBy(WebElement locator, String keysToBeSent,String buttonName) {
         try {
             new WebDriverWait(mobileDriver, AutomationConstants.WAIT_UNTIL_ELEMENT).until(ExpectedConditions.elementToBeClickable(locator)).sendKeys(keysToBeSent);
-            ExtentReporting.logInfo("Sent Keys to"+locator.getText());
+            ExtentReporting.logInfo("Sent Keys to "+buttonName);
         } catch (WebDriverException e) {
-            ExtentReporting.logFail("Could not Send Keys" + locator.getText(), true);
-            Log.error("Could not Send Keys"+ locator.getText(),e);
+            ExtentReporting.logFail("Could not Send Keys " +buttonName, true);
+            Log.error("Could not Send Keys"+ buttonName,e);
             return false;
         }
         return true;
@@ -222,21 +222,6 @@ public class Page {
     }
 
     /**
-     * Gets mobile element.
-     *
-     * @param mobileElement the mobile element
-     * @return the mobile element
-     */
-    public MobileElement getMobileElement(MobileElement mobileElement) {
-        try {
-            return (mobileElement != null && mobileElement.isDisplayed()) ? mobileElement : null;
-        } catch (StaleElementReferenceException se) {
-            return (mobileElement != null && mobileElement.isDisplayed()) ? mobileElement : null;
-        } catch (WebDriverException e) {
-            return null;
-        }
-    }
-    /**
      * Navigate back.
      */
     public void navigateBack() {
@@ -283,9 +268,16 @@ public class Page {
                 Log.info("Switch to Web Context" + context);
             } else {
                 ExtentReporting.logInfo("Could not Switch to Web Context " + context);
-                Log.info("Could not Switch to Web Context" + context);
+                Log.info("Could not Switch to Web Context " + context);
             }
         }
+    }
+
+
+    protected Point getCoridnates(MobileElement mobileElement)
+    {
+        Point location = mobileElement.getLocation();
+        return location;
     }
 }
 
